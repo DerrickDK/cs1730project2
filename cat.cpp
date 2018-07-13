@@ -23,18 +23,19 @@ int main(int argc, char *argv[]){
 	if(write(STDOUT_FILENO, buff, m) != m) {
 	}
       }
-      break;
     }
-    int fd = open(argv[i], O_RDONLY);
+  }
+      for(i = 1; i < argc; i++) {
+      int fd = open(argv[i], O_RDONLY);
     if(fd != -1){
       int n;
       while((n = read(fd, buff, BUFFSIZE)) > 0){
 	write(STDOUT_FILENO, buff, n);	
-      }
-      //break;
-    }
-    else{
-      perror("Bro... That's an error. Fix it");
-    }
-  }
+       }
+     }
+   }
+
+  
+
+  
 } 
