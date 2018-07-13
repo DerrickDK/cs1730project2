@@ -15,28 +15,26 @@ int main(int argc, char *argv[]){
   int i; 
   
   char buff[BUFFSIZE];
-  for(i = 1; i < argc; i++){
-    
+  for(i = 1; i < argc; i++){    
     // int fd = open(argv[i], O_RDONLY);
     if(!(strcmp(argv[i], "-"))){
-	  
-	 write(STDOUT_FILENO, buff, BUFFSIZE);
-      
-         break;
+      int m;
+      while((m = read(STDIN_FILENO, buff, BUFFSIZE)) > 0 ) {
+	if(write(STDOUT_FILENO, buff, m) != m) {
 	}
-       int fd = open(argv[i], O_RDONLY);
+      }
+      break;
+    }
+    int fd = open(argv[i], O_RDONLY);
     if(fd != -1){
       int n;
       while((n = read(fd, buff, BUFFSIZE)) > 0){
-	write(STDOUT_FILENO, buff, n);
-	
+	write(STDOUT_FILENO, buff, n);	
       }
       //break;
     }
     else{
       perror("Bro... That's an error. Fix it");
     }
-    
   }
-  
 } 
