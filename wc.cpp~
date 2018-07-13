@@ -1,0 +1,19 @@
+#include <iostream>
+
+using namespace std; 
+int main(int argc, char *argv[]){
+  int i;
+  std::string letter = argv[1]; 
+  switch(letter){
+  case "-w":
+  case "-l":
+  case "-c":
+  }
+  for(i=0; i < argc; i++){
+    cout << argv[i] <<endl;
+
+  }
+  int file = open(argv[2]);
+
+
+}
